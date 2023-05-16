@@ -2,12 +2,14 @@ package MainFiles;
 
 public class Samochod {
 
-    private int id;
+    private String id;
     private String marka;
     private String model;
     private int rocznik;
 
-   public Samochod(int id, String marka, String model, int rocznik)
+    private boolean dostepny = true;
+
+   public Samochod(String id, String marka, String model, int rocznik)
    {
        this.id=id;
        this.marka=marka;
@@ -15,7 +17,7 @@ public class Samochod {
        this.rocznik=rocznik;
    }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -31,6 +33,14 @@ public class Samochod {
         return rocznik;
     }
 
+    public boolean isDostepny() {
+        return dostepny;
+    }
+
+    public void setDostepny(boolean dostepny) {
+        this.dostepny = dostepny;
+    }
+
     @Override
     public String toString() {
         return "Samochod{" +
@@ -38,6 +48,7 @@ public class Samochod {
                 ", marka='" + marka + '\'' +
                 ", model='" + model + '\'' +
                 ", rocznik=" + rocznik +
+                ", dostepny=" + dostepny +
                 '}';
     }
 }
