@@ -1,5 +1,8 @@
 package MainFiles;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Samochod {
 
     private String id;
@@ -8,8 +11,11 @@ public class Samochod {
     private int rocznik;
 
     private boolean dostepny = true;
-
-   public Samochod(String id, String marka, String model, int rocznik)
+    @JsonCreator
+   public  Samochod(@JsonProperty("id") String id,
+                    @JsonProperty("marka") String marka,
+                    @JsonProperty("model") String model,
+                    @JsonProperty("rocznik") int rocznik)
    {
        this.id=id;
        this.marka=marka;

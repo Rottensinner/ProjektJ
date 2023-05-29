@@ -1,14 +1,20 @@
 package MainFiles;
-
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    private static final String CONFIG_FILE_PATH = "config.properties";
+    public static void main(String[] args) throws IOException {
+        SpisAut spisaut = stworzSpisAut();
 
-        SpisAut spisaut = new SpisAut();
 
         String wybor= "";
-
        do{
           wybor=dodajDane("wybor");
           if("dodaj pojazd".equalsIgnoreCase(wybor))
@@ -33,13 +39,25 @@ public class Main {
 
     }
 
+    private static SpisAut stworzSpisAut() throws IOException {
+        Properties properties = new Properties();
+        try(var fis =  new FileInputStream("config.properties")) {
+            properties.load(fis);
+        }
+
+         MenagerDanych menagerDanych = new MenagerDanych(new File(properties.getProperty("plik.danych")));
+
+        SpisAut spisaut = new SpisAut(menagerDanych);
+        return spisaut;
+    }
+
     private static void dodajPojazd(SpisAut spisaut) {
         System.out.println("Dodajemy samochody do bazy danych");
 
         String id = dodajDane("Id");
         String marka = dodajDane("Marka");
         String model = dodajDane("Model");
-        String rocznik = dodajDane("Rocznik");
+        int rocznik = odczytajliczbe("Rocznik");
         Samochod samochod = new Samochod(id, marka, model, Integer.valueOf(rocznik));
         spisaut.dodajSamochod(samochod);
     }
@@ -53,5 +71,21 @@ public class Main {
         System.out.println("Wpisales "+ nazwa + " : " + dane);
       return dane;
     }
+    public static int odczytajliczbe(String nazwa)
+    {
+        Scanner scanner = new Scanner(System.in);
+        Optional<Integer> liczba = Optional.empty();
+        do {
+            System.out.println("Wpisz "+ nazwa+": ");
+            try{
+                liczba=Optional.of(Integer.valueOf(scanner.nextLine()));
+            }catch (NumberFormatException numberFormatException){
+                System.out.println("wpisałeś błędne dane, wpisz jeszcze raz.");
+            }
+        }
+        while(liczba.isEmpty());
+        return liczba.get();
+    }
+
 
 }
