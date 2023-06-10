@@ -16,6 +16,16 @@ public class Klient {
         this.id = id;
     }
 
+    public void  inkrementacja(){
+
+        iloscaut++;
+    }
+
+    public void  dekrementacja(){
+
+        iloscaut++;
+    }
+
     public String getImie() {
         return imie;
     }

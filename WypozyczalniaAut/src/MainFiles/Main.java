@@ -119,6 +119,12 @@ public class Main {
             String idAuta = dodajDane("id");
 
             spisaut.wypozycz(idAuta, idKlienta);
+
+            // Zwiększanie ilości aut dla wypożyczającej osoby
+            Klient klient = spisklientow.getKlient(idKlienta);
+            if (klient != null) {
+                klient.inkrementacja();
+            }
         } else {
             System.out.println("Nie znaleziono klienta o podanym identyfikatorze.");
         }

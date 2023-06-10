@@ -24,5 +24,9 @@ public class SpisKlientow {
         for(Klient klient : klienci.values()){
             System.out.println(klient);
         }
-}}
+}
+    public Klient getKlient(String idKlienta) {
+        return klienci.get(idKlienta);
+    }
+}
 

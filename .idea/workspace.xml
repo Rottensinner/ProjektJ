@@ -8,15 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Samochod.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Samochod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Klient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Klient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Samochod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Samochod.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wypozyczalnia-dane.json" beforeDir="false" afterPath="$PROJECT_DIR$/wypozyczalnia-dane.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
