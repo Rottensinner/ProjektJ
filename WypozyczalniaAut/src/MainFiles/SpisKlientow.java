@@ -14,6 +14,9 @@ public class SpisKlientow {
 
     }
 
+    public boolean sprawdzKlienta(String id) {
+        return klienci.containsKey(id);
+    }
 
     public void wyswietlKlientow(){
         System.out.println("Wszyscy klienci");

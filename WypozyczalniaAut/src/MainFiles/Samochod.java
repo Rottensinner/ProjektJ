@@ -10,6 +10,8 @@ public class Samochod {
     private String model;
     private int rocznik;
 
+    private String iduzytkownika;
+
     private boolean dostepny = true;
     @JsonCreator
    public  Samochod(@JsonProperty("id") String id,
@@ -39,6 +41,15 @@ public class Samochod {
         return rocznik;
     }
 
+    public String getIduzytkownika() {
+        return iduzytkownika;
+    }
+
+
+    public void setIduzytkownika(String iduzytkownika) {
+        this.iduzytkownika = iduzytkownika;
+    }
+
     public boolean isDostepny() {
         return dostepny;
     }
@@ -47,13 +58,16 @@ public class Samochod {
         this.dostepny = dostepny;
     }
 
+
+
     @Override
     public String toString() {
         return "Samochod{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", marka='" + marka + '\'' +
                 ", model='" + model + '\'' +
                 ", rocznik=" + rocznik +
+                ", iduzytkownika=" + iduzytkownika +
                 ", dostepny=" + dostepny +
                 '}';
     }

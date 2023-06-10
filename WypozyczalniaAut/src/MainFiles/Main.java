@@ -44,8 +44,7 @@ public class Main {
                     dodajKlienta(spisklientow);
                     break;
                 case 5:
-                    String id = dodajDane("id");
-                    spisaut.wypozycz(id);
+                    wypozycz(spisklientow,spisaut);
                     break;
                 case 6:
                     String ida = dodajDane("id");
@@ -57,7 +56,10 @@ public class Main {
                 case 8:
                     a=0;
                     break;
-                default:
+                case 9:
+                    usunPojazd(spisaut);
+                    break;
+                    default:
                     System.out.println("Bledny wybor");
 
             }
@@ -88,6 +90,12 @@ public class Main {
         spisaut.dodajSamochod(samochod);
     }
 
+    private static void usunPojazd(SpisAut spisaut) {
+        System.out.println("Usuwamy pojazd podaj id");
+        String id = dodajDane("Id");
+        spisaut.usunPojazd(id);
+    }
+
     private static void dodajKlienta(SpisKlientow spisklientow) {
         System.out.println("Dodajemy osoby do bazy danych");
 
@@ -98,6 +106,24 @@ public class Main {
         Klient klient = new Klient(imie, nazwisko, telefon, id);
         spisklientow.dodajKlienta(klient);
     }
+
+    public static void wypozycz(SpisKlientow spisklientow, SpisAut spisaut) {
+        System.out.println("Podaj identyfikator klienta, któremu chcesz wypożyczyć auto:");
+        String idKlienta = dodajDane("id");
+
+        // Sprawdź, czy istnieje klient o podanym identyfikatorze
+        boolean klientIstnieje = spisklientow.sprawdzKlienta(idKlienta);
+        if (klientIstnieje) {
+            System.out.println("Wybierz auto do wypożyczenia:");
+            spisaut.wyswietlPojazdy();
+            String idAuta = dodajDane("id");
+
+            spisaut.wypozycz(idAuta, idKlienta);
+        } else {
+            System.out.println("Nie znaleziono klienta o podanym identyfikatorze.");
+        }
+    }
+
 
     public static String dodajDane(String nazwa) {
         Scanner scanner = new Scanner(System.in);

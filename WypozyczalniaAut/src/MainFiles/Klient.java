@@ -56,6 +56,8 @@ public class Klient {
         this.id = id;
     }
 
+
+
     @Override
     public String toString() {
         return "Klient{" +
