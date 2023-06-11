@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
@@ -20,6 +21,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wypozyczalnia-dane.json" beforeDir="false" afterPath="$PROJECT_DIR$/wypozyczalnia-dane.json" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" afterDir="false" />
+>>>>>>> bd34d1299b720fbc97be6d64078b998783c05838
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
