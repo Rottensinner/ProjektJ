@@ -47,6 +47,7 @@ public class SpisAut {
 
 
 
+
     public void wyswietldostepne(){
          System.out.println("Wszystkie dostepne pojazdy");
          for(Samochod samochod : wczytajKopieSamochod().values()){

@@ -1,5 +1,9 @@
 package MainFiles;
 
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Klient {
 
     private String imie;
@@ -8,8 +12,12 @@ public class Klient {
     private String id;
 
     private int iloscaut =0;
-
-    public Klient(String imie, String nazwisko, String telefon, String id) {
+    @JsonCreator
+    public Klient(
+            @JsonProperty("imie") String imie,
+            @JsonProperty("nazwisko") String nazwisko,
+            @JsonProperty("telefon")String telefon,
+            @JsonProperty("id")String id) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.telefon = Integer.valueOf(telefon);

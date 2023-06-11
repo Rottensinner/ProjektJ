@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         SpisAut spisaut = stworzSpisAut();
-        SpisKlientow spisklientow = new SpisKlientow();
+        SpisKlientow spisklientow = stworzSpisKlientow();
 
         int a=1;
 
@@ -78,7 +78,15 @@ public class Main {
         SpisAut spisaut = new SpisAut(menagerDanych);
         return spisaut;
     }
-
+    private static SpisKlientow stworzSpisKlientow() throws IOException {
+        Properties properties = new Properties();
+        try (var fis = new FileInputStream("klient-dane.json")) {
+            properties.load(fis);
+        }
+        MenagerKlient menagerKlient = new MenagerKlient(new File("klient-dane.json")); // Tworzenie obiektu MenagerKlient
+        SpisKlientow spisKlientow = new SpisKlientow(menagerKlient); // Tworzenie obiektu SpisKlientow z argumentem MenagerKlient
+        return spisKlientow;
+    }
     private static void dodajPojazd(SpisAut spisaut) {
         System.out.println("Dodajemy samochody do bazy danych");
 

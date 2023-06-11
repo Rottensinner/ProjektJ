@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3e094a5-c8d9-4670-ab87-fba739b671d3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/MenagerKlient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/klient-dane.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Samochod.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Samochod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Klient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Klient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Samochod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Samochod.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wypozyczalnia-dane.json" beforeDir="false" afterPath="$PROJECT_DIR$/wypozyczalnia-dane.json" afterDir="false" />
@@ -87,16 +90,5 @@
       <updated>1682452206432</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
