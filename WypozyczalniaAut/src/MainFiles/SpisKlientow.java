@@ -15,6 +15,7 @@ public class SpisKlientow {
         menagerKlient.zapiszKlientow(klienci);
     }
     public boolean sprawdzKlienta(String id) {
+        HashMap<String, Klient> klienci = menagerKlient.wczytajKlientow();
         return klienci.containsKey(id);
     }
 
@@ -24,12 +25,10 @@ public class SpisKlientow {
         for (Klient klient : klienci.values()) {
             System.out.println(klient);
         }
-<<<<<<< HEAD
-=======
+
 }
     public Klient getKlient(String idKlienta) {
         return klienci.get(idKlienta);
->>>>>>> bd34d1299b720fbc97be6d64078b998783c05838
     }
 }
 

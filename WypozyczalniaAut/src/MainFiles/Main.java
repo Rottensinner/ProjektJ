@@ -119,19 +119,17 @@ public class Main {
         System.out.println("Podaj identyfikator klienta, któremu chcesz wypożyczyć auto:");
         String idKlienta = dodajDane("id");
 
-        // Sprawdź, czy istnieje klient o podanym identyfikatorze
-        boolean klientIstnieje = spisklientow.sprawdzKlienta(idKlienta);
-        if (klientIstnieje) {
+        if (spisklientow.sprawdzKlienta(idKlienta)) {
             System.out.println("Wybierz auto do wypożyczenia:");
             spisaut.wyswietlPojazdy();
-            String idAuta = dodajDane("id");
+            String idAuta = dodajDane("id auta");
 
             spisaut.wypozycz(idAuta, idKlienta);
 
             // Zwiększanie ilości aut dla wypożyczającej osoby
             Klient klient = spisklientow.getKlient(idKlienta);
             if (klient != null) {
-                klient.inkrementacja();
+                // klient.inkrementacja();
             }
         } else {
             System.out.println("Nie znaleziono klienta o podanym identyfikatorze.");
