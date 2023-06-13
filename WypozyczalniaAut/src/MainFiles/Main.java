@@ -19,63 +19,120 @@ public class Main {
         int a=1;
 
         while(a==1) {
+            System.out.println("========================");
+            System.out.println("   Wypożyczalnia aut");
+            System.out.println("========================");
+            System.out.println("1. Zarządzanie klientami");
+            System.out.println("2. Zarządzanie autami");
+            System.out.println("3. Wypożyczenia");
+            System.out.println("4. Wyjście");
+            System.out.println("========================");
+            System.out.println("");
 
-
-            System.out.println("Witaj w wypozyczalni aut. Zdecyduj co chcesz zrobic");
-            System.out.println("1.Wyswietl auta \n2.Dodaj auta");
-            System.out.println("3.Wyswietl klientow \n4.Dodaj klientow");
-            System.out.println("5.Wypozycz auta \n6.Zwroc auta");
-            System.out.println("7.Wyswietl dostepne auta\n8.Usun auta");
-            System.out.println("9.Wyswietl auta posiadane przez klienta\n10. Wyjdz z programu");
 
             String wybor = dodajDane("wybor");
 
             switch (Integer.valueOf(wybor)) {
-
                 case 1:
-                    spisaut.wyswietlPojazdy();
+                    obslugaKlientow(spisklientow, spisaut);
                     break;
                 case 2:
-                    dodajPojazd(spisaut);
+                    obslugaAut(spisaut);
                     break;
                 case 3:
-                    spisklientow.wyswietlKlientow();
+                    obslugaWypozyczen(spisklientow, spisaut);
                     break;
                 case 4:
-                    dodajKlienta(spisklientow);
+                    a = 0;
                     break;
-                case 5:
-                    wypozycz(spisklientow,spisaut);
-                    break;
-                case 6:
-                    String ida = dodajDane("id");
-                    spisaut.zwroc(ida);
-                    break;
-                case 7:
-                    spisaut.wyswietldostepne();
-                    break;
-                case 8:
-                    usunPojazd(spisaut);
-                    break;
-                case 9:
-                    listaprzypisanychdoklienta(spisklientow,spisaut);
-                    break;
-                    case 10:
-                    a=0;
-                    break;
-                case 11:
-                    int x =spisaut.pokazIloscWypozyczonychAut("1");
-                    System.out.println(x);
-                    break;
-                case 12:
-                    usunklienta(spisklientow,spisaut);
-                    break;
-                    default:
-                    System.out.println("Bledny wybor");
+                default:
+                    System.out.println("Błędny wybór");
+            }
+
+
+            System.out.println(""); // Pusta linia dla czytelności
+                pressEnterToContinue();
 
             }
         }
+    private static void obslugaKlientow(SpisKlientow spisklientow, SpisAut spisaut) {
+        System.out.println("=============================");
+        System.out.println("   Zarządzanie klientami");
+        System.out.println("=============================");
+        System.out.println("1. Wyświetl klientów");
+        System.out.println("2. Dodaj klienta");
+        System.out.println("3. Usuń klienta");
 
+        String wybor = dodajDane("wybor");
+
+        switch (Integer.valueOf(wybor)) {
+            case 1:
+                spisklientow.wyswietlKlientow();
+                break;
+            case 2:
+                dodajKlienta(spisklientow);
+                break;
+            case 3:
+                usunklienta(spisklientow, spisaut);
+                break;
+            default:
+                System.out.println("Błędny wybór");
+        }
+    }
+
+    private static void obslugaAut(SpisAut spisaut) {
+        System.out.println("=============================");
+        System.out.println("   Zarządzanie autami");
+        System.out.println("=============================");
+        System.out.println("1. Wyświetl auta");
+        System.out.println("2. Dodaj auto");
+        System.out.println("3. Usuń auto");
+
+        String wybor = dodajDane("wybor");
+
+        switch (Integer.valueOf(wybor)) {
+            case 1:
+                spisaut.wyswietlPojazdy();
+                break;
+            case 2:
+                dodajPojazd(spisaut);
+                break;
+            case 3:
+                usunPojazd(spisaut);
+                break;
+            default:
+                System.out.println("Błędny wybór");
+        }
+    }
+
+    private static void obslugaWypozyczen(SpisKlientow spisklientow, SpisAut spisaut) {
+        System.out.println("=============================");
+        System.out.println("   Wypożyczenia");
+        System.out.println("=============================");
+        System.out.println("1. Wypożycz auto");
+        System.out.println("2. Zwróć auto");
+        System.out.println("3. Wyświetl dostępne auta");
+        System.out.println("4. Wyświetl auta posiadane przez klienta");
+
+        String wybor = dodajDane("wybor");
+
+        switch (Integer.valueOf(wybor)) {
+            case 1:
+                wypozycz(spisklientow, spisaut);
+                break;
+            case 2:
+                String ida = dodajDane("id");
+                spisaut.zwroc(ida);
+                break;
+            case 3:
+                spisaut.wyswietldostepne();
+                break;
+            case 4:
+                listaprzypisanychdoklienta(spisklientow, spisaut);
+                break;
+            default:
+                System.out.println("Błędny wybór");
+        }
     }
 
     private static SpisAut stworzSpisAut() throws IOException {
@@ -183,6 +240,27 @@ public class Main {
         return liczba.get();
     }
 
+    private static void clearScreen() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            // Handle errors
+        }
+    }
+
+    private static void pressEnterToContinue() {
+        System.out.print("Naciśnij Enter, aby kontynuować...");
+        try {
+            System.in.read();
+        } catch (Exception e) {
+            // Handle errors
+        }
+    }
   public static void usunklienta(SpisKlientow spisklientow,SpisAut spisaut){
 
       System.out.println("Podaj identyfikator klienta, ktorego chcesz usunac:");
