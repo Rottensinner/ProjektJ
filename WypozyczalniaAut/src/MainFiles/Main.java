@@ -63,6 +63,10 @@ public class Main {
                     case 10:
                     a=0;
                     break;
+                case 11:
+                    int x =spisaut.pokazIloscWypozyczonychAut("1");
+                    System.out.println(x);
+                    break;
                     default:
                     System.out.println("Bledny wybor");
 

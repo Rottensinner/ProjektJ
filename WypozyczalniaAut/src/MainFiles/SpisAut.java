@@ -103,6 +103,17 @@ public class SpisAut {
             System.out.println("Nie znaleziono pojazdu o id " + id+" lub nie jest on wypozyczony");
         }
     }
+    public int pokazIloscWypozyczonychAut(String idKlienta) {
+        int iloscAut = 0;
+
+        for (Samochod samochod : wczytajKopieSamochod().values()) {
+            if (samochod.getIduzytkownika() != null && samochod.getIduzytkownika().equals(idKlienta)) {
+                iloscAut++;
+            }
+        }
+
+        return iloscAut;
+    }
 
     private HashMap<String,Samochod> wczytajKopieSamochod(){
         return new HashMap<>( menagerDanych.wczytajPojazd());
