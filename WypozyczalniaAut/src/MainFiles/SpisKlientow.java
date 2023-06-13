@@ -27,11 +27,20 @@ public class SpisKlientow {
         }
 
 }
+    public void usunKlienta(String idKlienta, int ileaut ) {
 
-    public Klient getKlient(String idKlienta) {
-        HashMap<String, Klient> klienci = menagerKlient.wczytajKlientow();
-        return klienci.get(idKlienta);
+            HashMap<String, Klient> klienci = menagerKlient.wczytajKlientow();
+            if (klienci.containsKey(idKlienta)&&ileaut==0) {
+                klienci.remove(idKlienta);
+                menagerKlient.zapiszKlientow(klienci);
+                System.out.println("Klient o identyfikatorze " + idKlienta + " został usunięty.");
+            } else if(ileaut>0&&klienci.containsKey(idKlienta)) {
+                System.out.println("Ten klient wciaz ma wypozyczone auto.");
+            }
+            else{
+                System.out.println("Nie znaleziono klienta o podanym identyfikatorze.");
+            }
+
     }
-
 }
 

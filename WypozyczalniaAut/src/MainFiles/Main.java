@@ -67,6 +67,9 @@ public class Main {
                     int x =spisaut.pokazIloscWypozyczonychAut("1");
                     System.out.println(x);
                     break;
+                case 12:
+                    usunklienta(spisklientow,spisaut);
+                    break;
                     default:
                     System.out.println("Bledny wybor");
 
@@ -150,12 +153,7 @@ public class Main {
 
             spisaut.wypozycz(idAuta, idKlienta);
 
-            // Zwiększanie ilości aut dla wypożyczającej osoby
-            Klient klient = spisklientow.getKlient(idKlienta);
-            System.out.println(klient);
-            if (klient != null) {
-                klient.inkrementacja();
-            }
+
         } else {
             System.out.println("Nie znaleziono klienta o podanym identyfikatorze.");
         }
@@ -184,6 +182,14 @@ public class Main {
         while (liczba.isEmpty());
         return liczba.get();
     }
+
+  public static void usunklienta(SpisKlientow spisklientow,SpisAut spisaut){
+
+      System.out.println("Podaj identyfikator klienta, ktorego chcesz usunac:");
+      String idKlienta = dodajDane("id");
+      int ileaut =spisaut.pokazIloscWypozyczonychAut("1");
+      spisklientow.usunKlienta(idKlienta,ileaut);
+  }
 
 
 }

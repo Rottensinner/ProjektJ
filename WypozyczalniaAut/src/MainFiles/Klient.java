@@ -11,7 +11,7 @@ public class Klient {
     private int telefon;
     private String id;
 
-    private int iloscaut =0;
+
     @JsonCreator
     public Klient(
             @JsonProperty("imie") String imie,
@@ -25,15 +25,6 @@ public class Klient {
         this.id = id;
     }
 
-    public void  inkrementacja(){
-
-        iloscaut++;
-    }
-
-    public void  dekrementacja(){
-
-        iloscaut++;
-    }
 
     public String getImie() {
         return imie;
@@ -55,13 +46,7 @@ public class Klient {
         this.imie = imie;
     }
 
-    public int getIloscaut() {
-        return iloscaut;
-    }
 
-    public void setIloscaut(int iloscaut) {
-        this.iloscaut = iloscaut;
-    }
 
     public void setNazwisko(String nazwisko) {
         this.nazwisko = nazwisko;
@@ -84,7 +69,6 @@ public class Klient {
                 ", nazwisko='" + nazwisko + '\'' +
                 ", telefon=" + telefon +
                 ", id='" + id + '\'' +
-                ", iloscaut=" + iloscaut +
                 '}';
     }
 }
