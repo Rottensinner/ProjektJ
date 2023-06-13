@@ -1,6 +1,9 @@
 package MainFiles;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class SpisAut {
     private MenagerDanych menagerDanych;
@@ -45,11 +48,22 @@ public class SpisAut {
 
      }
 
-    public void wyswietlautaklienta(String idwlascicela){
-        System.out.println("Wszystkie pojazdy wypozyczone przez klienta");
-        for(Samochod samochod : wczytajKopieSamochod().values()){
-            if(samochod.getIduzytkownika()==idwlascicela)
+    public void wyswietlautaklienta(String idKlienta) {
+        List<Samochod> auta = new ArrayList<>();
+
+        for (Samochod samochod : wczytajKopieSamochod().values()) {
+            if (samochod.getIduzytkownika() != null && samochod.getIduzytkownika().equals(idKlienta)) {
+                auta.add(samochod);
+            }
+        }
+
+        if (!auta.isEmpty()) {
+            System.out.println("Auta przypisane do klienta o ID " + idKlienta + ":");
+            for (Samochod samochod : auta) {
                 System.out.println(samochod);
+            }
+        } else {
+            System.out.println("Nie znaleziono żadnych samochodów przypisanych do klienta o ID " + idKlienta);
         }
     }
 
