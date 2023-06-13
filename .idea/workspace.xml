@@ -95,6 +95,11 @@
         <option value="Space.CommitStatus" />
       </list>
     </option>
+    <option name="COLUMN_ID_WIDTH">
+      <map>
+        <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="15" />
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

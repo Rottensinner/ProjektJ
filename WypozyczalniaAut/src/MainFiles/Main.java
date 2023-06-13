@@ -187,7 +187,7 @@ public class Main {
 
       System.out.println("Podaj identyfikator klienta, ktorego chcesz usunac:");
       String idKlienta = dodajDane("id");
-      int ileaut =spisaut.pokazIloscWypozyczonychAut("1");
+      int ileaut =spisaut.pokazIloscWypozyczonychAut(idKlienta);
       spisklientow.usunKlienta(idKlienta,ileaut);
   }
 
