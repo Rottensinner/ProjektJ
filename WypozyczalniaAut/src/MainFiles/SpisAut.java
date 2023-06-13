@@ -45,13 +45,19 @@ public class SpisAut {
 
      }
 
-
+    public void wyswietlautaklienta(String idwlascicela){
+        System.out.println("Wszystkie pojazdy wypozyczone przez klienta");
+        for(Samochod samochod : wczytajKopieSamochod().values()){
+            if(samochod.getIduzytkownika()==idwlascicela)
+                System.out.println(samochod);
+        }
+    }
 
 
     public void wyswietldostepne(){
          System.out.println("Wszystkie dostepne pojazdy");
          for(Samochod samochod : wczytajKopieSamochod().values()){
-             if(samochod.isDostepny()==false)
+             if(samochod.isDostepny()==true)
                  System.out.println(samochod);
          }
 
@@ -61,26 +67,26 @@ public class SpisAut {
     public void wypozycz(String id, String idk) {
         HashMap<String, Samochod> samochody = wczytajKopieSamochod();
         Samochod samochod = samochody.get(id);
-        if (samochod != null) {
+        if (samochod != null&& samochod.getIduzytkownika()==null) {
             samochod.setDostepny(false);
             samochod.setIduzytkownika(idk);  // Poprawiony fragment kodu
             menagerDanych.zapiszPojazd(samochody);
             System.out.println("Pojazd o id " + id + " został wypożyczony");
         } else {
-            System.out.println("Nie znaleziono pojazdu o id " + id);
+            System.out.println("Nie znaleziono pojazdu o id " + id +" lub zostal juz wypozyczony");
         }
     }
 
     public void zwroc(String id) {
         HashMap<String, Samochod> samochody = wczytajKopieSamochod();
         Samochod samochod = samochody.get(id);
-        if (samochod != null) {
+        if (samochod != null&&samochod.getIduzytkownika()!=null) {
             samochod.setDostepny(true);
             samochod.setIduzytkownika(null); // Ustawienie wartości null
             menagerDanych.zapiszPojazd(samochody);
             System.out.println("Pojazd o id " + id + " został zwrócony");
         } else {
-            System.out.println("Nie znaleziono pojazdu o id " + id);
+            System.out.println("Nie znaleziono pojazdu o id " + id+" lub nie jest on wypozyczony");
         }
     }
 

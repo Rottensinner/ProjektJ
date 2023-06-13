@@ -10,7 +10,7 @@ public class Samochod {
     private String model;
     private int rocznik;
 
-    private String iduzytkownika;
+    private String iduzytkownika=null;
 
     private boolean dostepny = true;
     @JsonCreator
@@ -18,12 +18,13 @@ public class Samochod {
                     @JsonProperty("marka") String marka,
                     @JsonProperty("model") String model,
                     @JsonProperty("rocznik") int rocznik)
-   {
+
+    {
        this.id=id;
        this.marka=marka;
        this.model=model;
        this.rocznik=rocznik;
-   }
+    }
 
     public String getId() {
         return id;

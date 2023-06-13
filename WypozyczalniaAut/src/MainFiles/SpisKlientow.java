@@ -27,8 +27,11 @@ public class SpisKlientow {
         }
 
 }
+
     public Klient getKlient(String idKlienta) {
+        HashMap<String, Klient> klienci = menagerKlient.wczytajKlientow();
         return klienci.get(idKlienta);
     }
+
 }
 

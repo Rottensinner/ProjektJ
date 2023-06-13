@@ -25,7 +25,8 @@ public class Main {
             System.out.println("1.Wyswietl auta \n2.Dodaj auta");
             System.out.println("3.Wyswietl klientow \n4.Dodaj klientow");
             System.out.println("5.Wypozycz auta \n6.Zwroc auta");
-            System.out.println("7.Wyswietl dostepne auta\n8.Wyjscie z programu");
+            System.out.println("7.Wyswietl dostepne auta\n8.Usun auta");
+            System.out.println("9.Wyswietl auta posiadane przez klienta\n10. Wyjdz z programu");
 
             String wybor = dodajDane("wybor");
 
@@ -54,10 +55,13 @@ public class Main {
                     spisaut.wyswietldostepne();
                     break;
                 case 8:
-                    a=0;
+                    usunPojazd(spisaut);
                     break;
                 case 9:
-                    usunPojazd(spisaut);
+                    listaprzypisanychdoklienta(spisklientow,spisaut);
+                    break;
+                    case 10:
+                    a=0;
                     break;
                     default:
                     System.out.println("Bledny wybor");
@@ -115,11 +119,27 @@ public class Main {
         spisklientow.dodajKlienta(klient);
     }
 
+    public static void listaprzypisanychdoklienta(SpisKlientow spisklientow, SpisAut spisaut){
+        System.out.println("Podaj identyfikator klienta, któremu chcesz sprawdzic posiadane auta:");
+        String idKlienta = dodajDane("id");
+
+        if (spisklientow.sprawdzKlienta(idKlienta)) {
+            System.out.println(spisklientow.sprawdzKlienta(idKlienta));
+
+            spisaut.wyswietlautaklienta(idKlienta);
+
+        } else {
+            System.out.println("Nie znaleziono klienta o podanym identyfikatorze.");
+        }
+    }
+
     public static void wypozycz(SpisKlientow spisklientow, SpisAut spisaut) {
         System.out.println("Podaj identyfikator klienta, któremu chcesz wypożyczyć auto:");
         String idKlienta = dodajDane("id");
 
         if (spisklientow.sprawdzKlienta(idKlienta)) {
+            System.out.println(spisklientow.sprawdzKlienta(idKlienta));
+
             System.out.println("Wybierz auto do wypożyczenia:");
             spisaut.wyswietlPojazdy();
             String idAuta = dodajDane("id auta");
@@ -128,8 +148,9 @@ public class Main {
 
             // Zwiększanie ilości aut dla wypożyczającej osoby
             Klient klient = spisklientow.getKlient(idKlienta);
+            System.out.println(klient);
             if (klient != null) {
-                // klient.inkrementacja();
+                klient.inkrementacja();
             }
         } else {
             System.out.println("Nie znaleziono klienta o podanym identyfikatorze.");

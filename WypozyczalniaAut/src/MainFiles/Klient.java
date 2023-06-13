@@ -18,6 +18,7 @@ public class Klient {
             @JsonProperty("nazwisko") String nazwisko,
             @JsonProperty("telefon")String telefon,
             @JsonProperty("id")String id) {
+
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.telefon = Integer.valueOf(telefon);
