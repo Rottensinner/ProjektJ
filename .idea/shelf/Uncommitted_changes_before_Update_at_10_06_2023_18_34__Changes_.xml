@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_10_06_2023_18_34_[Changes]" date="1686414861112" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_06_2023_18_34_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10.06.2023 18:34 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProjektJ/MainFiles/Klient.class" />
+    <option name="AFTER_PATH" value="out/production/ProjektJ/MainFiles/Klient.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_06_2023_18_34_[Changes]/Klient.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProjektJ/MainFiles/SpisKlientow.class" />
+    <option name="AFTER_PATH" value="out/production/ProjektJ/MainFiles/SpisKlientow.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_06_2023_18_34_[Changes]/SpisKlientow.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProjektJ/MainFiles/Main.class" />
+    <option name="AFTER_PATH" value="out/production/ProjektJ/MainFiles/Main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_06_2023_18_34_[Changes]/Main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProjektJ/MainFiles/SpisAut.class" />
+    <option name="AFTER_PATH" value="out/production/ProjektJ/MainFiles/SpisAut.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_06_2023_18_34_[Changes]/SpisAut.class" />
+  </binary>
+</changelist>

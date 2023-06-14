@@ -1,0 +1,336 @@
+Index: WypozyczalniaAut/src/MainFiles/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package MainFiles;\r\n\r\nimport java.io.File;\r\nimport java.io.FileInputStream;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.IOException;\r\nimport java.util.HashMap;\r\nimport java.util.Optional;\r\nimport java.util.Properties;\r\nimport java.util.Scanner;\r\n\r\npublic class Main {\r\n    private static final String CONFIG_FILE_PATH = \"config.properties\";\r\n\r\n    public static void main(String[] args) throws IOException {\r\n        SpisAut spisaut = stworzSpisAut();\r\n        SpisKlientow spisklientow = new SpisKlientow();\r\n\r\n        int a=1;\r\n\r\n        while(a==1) {\r\n\r\n\r\n            System.out.println(\"Witaj w wypozyczalni aut. Zdecyduj co chcesz zrobic\");\r\n            System.out.println(\"1.Wyswietl auta \\n2.Dodaj auta\");\r\n            System.out.println(\"3.Wyswietl klientow \\n4.Dodaj klientow\");\r\n            System.out.println(\"5.Wypozycz auta \\n6.Zwroc auta\");\r\n            System.out.println(\"7.Wyswietl dostepne auta\\n8.Wyjscie z programu\");\r\n\r\n            String wybor = dodajDane(\"wybor\");\r\n\r\n            switch (Integer.valueOf(wybor)) {\r\n\r\n                case 1:\r\n                    spisaut.wyswietlPojazdy();\r\n                    break;\r\n                case 2:\r\n                    dodajPojazd(spisaut);\r\n                    break;\r\n                case 3:\r\n                    spisklientow.wyswietlKlientow();\r\n                    break;\r\n                case 4:\r\n                    dodajKlienta(spisklientow);\r\n                    break;\r\n                case 5:\r\n                    String id = dodajDane(\"id\");\r\n                    spisaut.wypozycz(id);\r\n                    break;\r\n                case 6:\r\n                    String ida = dodajDane(\"id\");\r\n                    spisaut.zwroc(ida);\r\n                    break;\r\n                case 7:\r\n                    spisaut.wyswietldostepne();\r\n                    break;\r\n                case 8:\r\n                    a=0;\r\n                    break;\r\n                default:\r\n                    System.out.println(\"Bledny wybor\");\r\n\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    private static SpisAut stworzSpisAut() throws IOException {\r\n        Properties properties = new Properties();\r\n        try (var fis = new FileInputStream(\"config.properties\")) {\r\n            properties.load(fis);\r\n        }\r\n\r\n        MenagerDanych menagerDanych = new MenagerDanych(new File(properties.getProperty(\"plik.danych\")));\r\n\r\n        SpisAut spisaut = new SpisAut(menagerDanych);\r\n        return spisaut;\r\n    }\r\n\r\n    private static void dodajPojazd(SpisAut spisaut) {\r\n        System.out.println(\"Dodajemy samochody do bazy danych\");\r\n\r\n        String id = dodajDane(\"Id\");\r\n        String marka = dodajDane(\"Marka\");\r\n        String model = dodajDane(\"Model\");\r\n        int rocznik = odczytajliczbe(\"Rocznik\");\r\n        Samochod samochod = new Samochod(id, marka, model, Integer.valueOf(rocznik));\r\n        spisaut.dodajSamochod(samochod);\r\n    }\r\n\r\n    private static void dodajKlienta(SpisKlientow spisklientow) {\r\n        System.out.println(\"Dodajemy osoby do bazy danych\");\r\n\r\n        String imie = dodajDane(\"imie\");\r\n        String nazwisko = dodajDane(\"nazwisko\");\r\n        String telefon = dodajDane(\"telefon\");\r\n        String id = String.valueOf(odczytajliczbe(\"id\"));\r\n        Klient klient = new Klient(imie, nazwisko, telefon, id);\r\n        spisklientow.dodajKlienta(klient);\r\n    }\r\n\r\n    public static String dodajDane(String nazwa) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        System.out.println(\"Wpisz \" + nazwa);\r\n        String dane = scanner.nextLine();\r\n        System.out.println(\"Wpisales \" + nazwa + \" : \" + dane);\r\n        return dane;\r\n    }\r\n\r\n    public static int odczytajliczbe(String nazwa) {\r\n        Scanner scanner = new Scanner(System.in);\r\n        Optional<Integer> liczba = Optional.empty();\r\n        do {\r\n            System.out.println(\"Wpisz \" + nazwa + \": \");\r\n            try {\r\n                liczba = Optional.of(Integer.valueOf(scanner.nextLine()));\r\n            } catch (NumberFormatException numberFormatException) {\r\n                System.out.println(\"wpisałeś błędne dane, wpisz jeszcze raz.\");\r\n            }\r\n        }\r\n        while (liczba.isEmpty());\r\n        return liczba.get();\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WypozyczalniaAut/src/MainFiles/Main.java b/WypozyczalniaAut/src/MainFiles/Main.java
+--- a/WypozyczalniaAut/src/MainFiles/Main.java	(revision 3b439f05fe0ac9c170c9bd8e70cd804de3c48a77)
++++ b/WypozyczalniaAut/src/MainFiles/Main.java	(date 1686400529757)
+@@ -14,7 +14,7 @@
+ 
+     public static void main(String[] args) throws IOException {
+         SpisAut spisaut = stworzSpisAut();
+-        SpisKlientow spisklientow = new SpisKlientow();
++        SpisKlientow spisklientow = stworzSpisKlientow();
+ 
+         int a=1;
+ 
+@@ -38,7 +38,7 @@
+                     dodajPojazd(spisaut);
+                     break;
+                 case 3:
+-                    spisklientow.wyswietlKlientow();
++                    spisklientow.wyswietlPojazdy();
+                     break;
+                 case 4:
+                     dodajKlienta(spisklientow);
+@@ -76,7 +76,17 @@
+         SpisAut spisaut = new SpisAut(menagerDanych);
+         return spisaut;
+     }
++    private static SpisKlientow stworzSpisKlientow() throws IOException {
++        Properties properties = new Properties();
++        try (var fis = new FileInputStream("klient-dane.json")) {
++            properties.load(fis);
++        }
+ 
++        MenagerKlient menagerKlient = new MenagerKlient(new File("klient-dane.json"));
++
++        SpisKlientow spisklientow = new SpisKlientow(menagerKlient);
++        return spisklientow;
++    }
+     private static void dodajPojazd(SpisAut spisaut) {
+         System.out.println("Dodajemy samochody do bazy danych");
+ 
+@@ -96,7 +106,7 @@
+         String telefon = dodajDane("telefon");
+         String id = String.valueOf(odczytajliczbe("id"));
+         Klient klient = new Klient(imie, nazwisko, telefon, id);
+-        spisklientow.dodajKlienta(klient);
++        spisklientow.dodajKlient(klient);
+     }
+ 
+     public static String dodajDane(String nazwa) {
+Index: WypozyczalniaAut/src/MainFiles/Klient.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package MainFiles;\r\n\r\npublic class Klient {\r\n\r\n    private String imie;\r\n    private String nazwisko;\r\n    private int telefon;\r\n    private String id;\r\n\r\n    private int iloscaut =0;\r\n\r\n    public Klient(String imie, String nazwisko, String telefon, String id) {\r\n        this.imie = imie;\r\n        this.nazwisko = nazwisko;\r\n        this.telefon = Integer.valueOf(telefon);\r\n        this.id = id;\r\n    }\r\n\r\n    public String getImie() {\r\n        return imie;\r\n    }\r\n\r\n    public String getNazwisko() {\r\n        return nazwisko;\r\n    }\r\n\r\n    public int getTelefon() {\r\n        return telefon;\r\n    }\r\n\r\n    public String getId() {\r\n        return id;\r\n    }\r\n\r\n    public void setImie(String imie) {\r\n        this.imie = imie;\r\n    }\r\n\r\n    public int getIloscaut() {\r\n        return iloscaut;\r\n    }\r\n\r\n    public void setIloscaut(int iloscaut) {\r\n        this.iloscaut = iloscaut;\r\n    }\r\n\r\n    public void setNazwisko(String nazwisko) {\r\n        this.nazwisko = nazwisko;\r\n    }\r\n\r\n    public void setTelefon(int telefon) {\r\n        this.telefon = telefon;\r\n    }\r\n\r\n    public void setId(String id) {\r\n        this.id = id;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Klient{\" +\r\n                \"imie='\" + imie + '\\'' +\r\n                \", nazwisko='\" + nazwisko + '\\'' +\r\n                \", telefon=\" + telefon +\r\n                \", id='\" + id + '\\'' +\r\n                \", iloscaut=\" + iloscaut +\r\n                '}';\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WypozyczalniaAut/src/MainFiles/Klient.java b/WypozyczalniaAut/src/MainFiles/Klient.java
+--- a/WypozyczalniaAut/src/MainFiles/Klient.java	(revision 3b439f05fe0ac9c170c9bd8e70cd804de3c48a77)
++++ b/WypozyczalniaAut/src/MainFiles/Klient.java	(date 1686395022991)
+@@ -1,5 +1,9 @@
+ package MainFiles;
+ 
++
++import com.fasterxml.jackson.annotation.JsonCreator;
++import com.fasterxml.jackson.annotation.JsonProperty;
++
+ public class Klient {
+ 
+     private String imie;
+@@ -8,8 +12,12 @@
+     private String id;
+ 
+     private int iloscaut =0;
+-
+-    public Klient(String imie, String nazwisko, String telefon, String id) {
++    @JsonCreator
++    public Klient(
++            @JsonProperty("imie") String imie,
++            @JsonProperty("nazwisko") String nazwisko,
++            @JsonProperty("telefon")String telefon,
++            @JsonProperty("id")String id) {
+         this.imie = imie;
+         this.nazwisko = nazwisko;
+         this.telefon = Integer.valueOf(telefon);
+Index: WypozyczalniaAut/src/MainFiles/SpisKlientow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package MainFiles;\r\n\r\nimport java.util.HashMap;\r\n\r\npublic class SpisKlientow {\r\n\r\n    private HashMap<String,Klient> klienci = new HashMap<>();\r\n\r\n\r\n    public void dodajKlienta(Klient klient)\r\n    {\r\n\r\n        klienci.put(klient.getId(),klient);\r\n\r\n    }\r\n\r\n\r\n    public void wyswietlKlientow(){\r\n        System.out.println(\"Wszyscy klienci\");\r\n\r\n        for(Klient klient : klienci.values()){\r\n            System.out.println(klient);\r\n        }\r\n}}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WypozyczalniaAut/src/MainFiles/SpisKlientow.java b/WypozyczalniaAut/src/MainFiles/SpisKlientow.java
+--- a/WypozyczalniaAut/src/MainFiles/SpisKlientow.java	(revision 3b439f05fe0ac9c170c9bd8e70cd804de3c48a77)
++++ b/WypozyczalniaAut/src/MainFiles/SpisKlientow.java	(date 1686399104273)
+@@ -3,23 +3,32 @@
+ import java.util.HashMap;
+ 
+ public class SpisKlientow {
+-
++    private MenagerKlient menagerKlient;
+     private HashMap<String,Klient> klienci = new HashMap<>();
+ 
++    public SpisKlientow(MenagerKlient menagerKlient){
++        this.menagerKlient = menagerKlient;
++    }
+ 
+-    public void dodajKlienta(Klient klient)
+-    {
+ 
++    public void dodajKlient(Klient klient)
++    {
++        HashMap<String, Klient> klienci = wczytajKopieKlientow();
+         klienci.put(klient.getId(),klient);
+-
++        menagerKlient.zapiszKlientow(klienci);
+     }
+ 
++    public void wyswietlPojazdy(){
++        System.out.println("Wszystkie samochody");
+ 
+-    public void wyswietlKlientow(){
+-        System.out.println("Wszyscy klienci");
+-
+-        for(Klient klient : klienci.values()){
++        for(Klient klient : wczytajKopieKlientow().values()){
+             System.out.println(klient);
+         }
+-}}
++
+ 
++    }
++
++    private HashMap<String,Klient> wczytajKopieKlientow(){
++        return new HashMap<>( menagerKlient.wczytajKlientow());
++    }
++}
+Index: WypozyczalniaAut/src/MainFiles/SpisAut.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package MainFiles;\r\n\r\nimport java.util.HashMap;\r\n\r\npublic class SpisAut {\r\n    private MenagerDanych menagerDanych;\r\n    private HashMap<String,Samochod> samochody = new HashMap<>();\r\n\r\n    public SpisAut(MenagerDanych menagerDanych){\r\n        this.menagerDanych = menagerDanych;\r\n    }\r\n\r\n\r\n     public void dodajSamochod(Samochod samochod)\r\n     {\r\n         HashMap<String, Samochod> samochody = wczytajKopieSamochod();\r\n         samochody.put(samochod.getId(),samochod);\r\n         menagerDanych.zapiszPojazd(samochody);\r\n     }\r\n\r\n     public void wyswietlPojazdy(){\r\n         System.out.println(\"Wszystkie samochody\");\r\n\r\n         for(Samochod samochod : wczytajKopieSamochod().values()){\r\n             System.out.println(samochod);\r\n         }\r\n\r\n\r\n     }\r\n\r\n\r\n\r\n    public void wyswietldostepne(){\r\n         System.out.println(\"Wszystkie dostepne pojazdy\");\r\n         for(Samochod samochod : wczytajKopieSamochod().values()){\r\n             if(samochod.isDostepny()==false)\r\n                 System.out.println(samochod);\r\n         }\r\n\r\n\r\n     }\r\n\r\n     public void wypozycz(String id){\r\n         HashMap<String, Samochod> samochody = wczytajKopieSamochod();\r\n         samochody.get(Integer.valueOf(id)).setDostepny(false);\r\n         menagerDanych.zapiszPojazd(samochody);\r\n         System.out.println(\"Pojazd o id \"+id+\" został wypozyczony\");\r\n     }\r\n\r\n     public void zwroc(String id){\r\n         HashMap<String, Samochod> samochody = wczytajKopieSamochod();\r\n\r\n         samochody.get(Integer.valueOf(id)).setDostepny(true);\r\n         menagerDanych.zapiszPojazd(samochody);\r\n         System.out.println(\"Pojazd o id \"+id+\" został zwrocony\");\r\n     }\r\n    private HashMap<String,Samochod> wczytajKopieSamochod(){\r\n        return new HashMap<>( menagerDanych.wczytajPojazd());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WypozyczalniaAut/src/MainFiles/SpisAut.java b/WypozyczalniaAut/src/MainFiles/SpisAut.java
+--- a/WypozyczalniaAut/src/MainFiles/SpisAut.java	(revision 3b439f05fe0ac9c170c9bd8e70cd804de3c48a77)
++++ b/WypozyczalniaAut/src/MainFiles/SpisAut.java	(date 1686399509545)
+@@ -30,6 +30,7 @@
+ 
+ 
+ 
++
+     public void wyswietldostepne(){
+          System.out.println("Wszystkie dostepne pojazdy");
+          for(Samochod samochod : wczytajKopieSamochod().values()){
+Index: WypozyczalniaAut/src/MainFiles/MenagerKlient.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/WypozyczalniaAut/src/MainFiles/MenagerKlient.java b/WypozyczalniaAut/src/MainFiles/MenagerKlient.java
+new file mode 100644
+--- /dev/null	(date 1686394408613)
++++ b/WypozyczalniaAut/src/MainFiles/MenagerKlient.java	(date 1686394408613)
+@@ -0,0 +1,37 @@
++package MainFiles;
++
++import com.fasterxml.jackson.core.type.TypeReference;
++import com.fasterxml.jackson.databind.ObjectMapper;
++
++import java.io.File;
++import java.io.IOException;
++import java.util.HashMap;
++public class MenagerKlient {
++    private ObjectMapper objectMapper = new ObjectMapper();
++    private File plikKlienci;
++
++    public MenagerKlient(File plikKlienci) {
++        this.plikKlienci = plikKlienci;
++    }
++
++    public HashMap<String, Klient> wczytajKlientow() {
++        if (!plikKlienci.exists()) {
++            return new HashMap<>();
++        }
++        try {
++            return objectMapper.readValue(plikKlienci, new TypeReference<>() {
++            });
++        } catch (IOException ex) {
++            throw new RuntimeException("Wystąpił błąd w czasie wczytywania danych. ", ex);
++        }
++    }
++
++    public void zapiszKlientow(HashMap<String, Klient> klienci) {
++        try {
++            objectMapper.writeValue(plikKlienci, klienci);
++        } catch (IOException ex) {
++            throw new RuntimeException("Wystąpił błąd w czasie zapisywania danych. ", ex);
++        }
++    }
++
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"a3e094a5-c8d9-4670-ab87-fba739b671d3\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/wypozyczalnia-dane.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/wypozyczalnia-dane.json\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Ovs5OiU8B3Ghl72GmODX78GFEO\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/brykm/OneDrive/Pulpit/javaprojekt/ProjektJ\",\r\n    \"project.structure.last.edited\": \"Libraries\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"preferences.sourceCode.Java\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"19\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"MainFiles.Main\" />\r\n      <module name=\"ProjektJ\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"MainFiles.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"a3e094a5-c8d9-4670-ab87-fba739b671d3\" name=\"Changes\" comment=\"\" />\r\n      <created>1682452206432</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1682452206432</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 3b439f05fe0ac9c170c9bd8e70cd804de3c48a77)
++++ b/.idea/workspace.xml	(date 1686400512276)
+@@ -5,11 +5,20 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="a3e094a5-c8d9-4670-ab87-fba739b671d3" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/MenagerKlient.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/klient-dane.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Klient.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/wypozyczalnia-dane.json" beforeDir="false" afterPath="$PROJECT_DIR$/wypozyczalnia-dane.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisAut.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Klient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Klient.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisAut.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,7 +34,6 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -35,19 +43,19 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "last_opened_file_path": "C:/Users/brykm/OneDrive/Pulpit/javaprojekt/ProjektJ",
+-    "project.structure.last.edited": "Libraries",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/brykm/OneDrive/Pulpit/javaprojekt/ProjektJ&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="ALTERNATIVE_JRE_PATH" value="19" />
+Index: config.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plik.danych = wypozyczalnia-dane.json
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/config.properties b/config.properties
+--- a/config.properties	(revision 3b439f05fe0ac9c170c9bd8e70cd804de3c48a77)
++++ b/config.properties	(date 1686399509540)
+@@ -1,1 +1,1 @@
+-plik.danych = wypozyczalnia-dane.json
+\ No newline at end of file
++plik.danych = wypozyczalnia-dane.json 
+Index: .idea/codeStyles/codeStyleConfig.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"ProjectCodeStyleConfiguration\">\r\n  <state>\r\n    <option name=\"PREFERRED_PROJECT_CODE_STYLE\" value=\"Default\" />\r\n  </state>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/codeStyles/codeStyleConfig.xml b/.idea/codeStyles/codeStyleConfig.xml
+--- a/.idea/codeStyles/codeStyleConfig.xml	(revision 3b439f05fe0ac9c170c9bd8e70cd804de3c48a77)
++++ b/.idea/codeStyles/codeStyleConfig.xml	(date 1686296040133)
+@@ -1,5 +1,5 @@
+ <component name="ProjectCodeStyleConfiguration">
+   <state>
+-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
++    <option name="USE_PER_PROJECT_SETTINGS" value="true" />
+   </state>
+ </component>
+\ No newline at end of file
+Index: .idea/codeStyles/Project.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/codeStyles/Project.xml b/.idea/codeStyles/Project.xml
+new file mode 100644
+--- /dev/null	(date 1686296030931)
++++ b/.idea/codeStyles/Project.xml	(date 1686296030931)
+@@ -0,0 +1,10 @@
++<component name="ProjectCodeStyleConfiguration">
++  <code_scheme name="Project" version="173">
++    <codeStyleSettings language="JAVA">
++      <option name="SPACE_WITHIN_BRACES" value="true" />
++      <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
++      <option name="KEEP_SIMPLE_LAMBDAS_IN_ONE_LINE" value="true" />
++      <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
++    </codeStyleSettings>
++  </code_scheme>
++</component>
+\ No newline at end of file
+diff --git a/klient-dane.json b/klient-dane.json
+new file mode 100644
