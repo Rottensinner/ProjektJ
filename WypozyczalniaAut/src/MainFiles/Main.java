@@ -158,7 +158,14 @@ public class Main {
     private static void dodajPojazd(SpisAut spisaut) {
         System.out.println("Dodajemy samochody do bazy danych");
 
-        String id = dodajDane("Id");
+        String id;
+        do {
+            id = dodajDane("Id");
+            if (spisaut.sprawdzCzyPojazdIstnieje(id)) {
+                System.out.println("Pojazd o podanym ID już istnieje. Wprowadź inne ID.");
+            }
+        } while (spisaut.sprawdzCzyPojazdIstnieje(id));
+
         String marka = dodajDane("Marka");
         String model = dodajDane("Model");
         int rocznik = odczytajliczbe("Rocznik");

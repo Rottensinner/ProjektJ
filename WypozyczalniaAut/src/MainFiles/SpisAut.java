@@ -118,4 +118,13 @@ public class SpisAut {
     private HashMap<String,Samochod> wczytajKopieSamochod(){
         return new HashMap<>( menagerDanych.wczytajPojazd());
     }
+    public boolean sprawdzCzyPojazdIstnieje(String id) {
+        HashMap<String, Samochod> samochody = wczytajKopieSamochod();
+        for (Samochod samochod : samochody.values()) {
+            if (samochod.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
