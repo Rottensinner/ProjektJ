@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3e094a5-c8d9-4670-ab87-fba739b671d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" beforeDir="false" afterPath="$PROJECT_DIR$/WypozyczalniaAut/src/MainFiles/SpisKlientow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjektJ/MainFiles/SpisKlientow.class" afterDir="false" />
-    </list>
+    <list default="true" id="a3e094a5-c8d9-4670-ab87-fba739b671d3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
