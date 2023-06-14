@@ -42,5 +42,10 @@ public class SpisKlientow {
             }
 
     }
+    public boolean sprawdzCzyKlientIstnieje(String id) {
+         HashMap<String,Klient> klienci = menagerKlient.wczytajKlientow() ;
+        return klienci.containsKey(id);
+
+    }
 }
 

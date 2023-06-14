@@ -181,11 +181,18 @@ public class Main {
 
     private static void dodajKlienta(SpisKlientow spisklientow) {
         System.out.println("Dodajemy osoby do bazy danych");
+        String id ;
+        do {
+            id = dodajDane("id");
+            if (spisklientow.sprawdzCzyKlientIstnieje(id)) {
+                System.out.println("Klient o podanym ID już istnieje. Wprowadź inne ID.");
+            }
+        } while (spisklientow.sprawdzCzyKlientIstnieje(id));
 
         String imie = dodajDane("imie");
         String nazwisko = dodajDane("nazwisko");
         String telefon = dodajDane("telefon");
-        String id = String.valueOf(odczytajliczbe("id"));
+
         Klient klient = new Klient(imie, nazwisko, telefon, id);
         spisklientow.dodajKlienta(klient);
     }
